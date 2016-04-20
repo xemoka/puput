@@ -29,8 +29,8 @@ before_install:
   - sudo apt-get install xvfb
 install:
   - mysql -e 'create database puput;'
-  - pip install .
-  - pip install -r requirements-test.txt
+#  - pip install .
+#  - pip install -r requirements-test.txt
 before_script:
   - cd tests/testapp/
   - python manage.py migrate

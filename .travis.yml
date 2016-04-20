@@ -38,4 +38,4 @@ before_script:
   - python manage.py runserver &
   - cd ../..
 script:
-  - py.test
+  - tox

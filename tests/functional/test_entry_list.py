@@ -7,7 +7,7 @@ class TestEntryList(object):
         assert len(entries) > 0
 
     def test_entry_page_search(self, browser):
-        browser.visit('http://127.0.0.1:8000/blog2/search/?q=test')
+        browser.visit('http://127.0.0.1:8000/blog/search/?q=test')
         entries = browser.find_by_css('.page-content')
         assert browser.status_code == 200
         assert browser.is_text_present('search')
@@ -42,7 +42,7 @@ class TestEntryList(object):
         assert len(entries) > 0
 
     def test_entry_page_archive_year_month(self, browser):
-        browser.visit('http://127.0.0.1:8000/blog/2016/03/')
+        browser.visit('http://127.0.0.1:8000/blog/2016/04/')
         entries = browser.find_by_css('.page-content')
         assert browser.status_code == 200
         assert browser.is_text_present('Entries for date')

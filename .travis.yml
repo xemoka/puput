@@ -2,7 +2,6 @@ language: python
 python: 2.7
 services:
   - mysql
-
 matrix:
   include:
    - env: TOXENV=py27-dj18
@@ -32,10 +31,11 @@ install:
   - mysql -e 'create database puput;'
   - pip install .
   - pip install -r requirements-test.txt
-  - cd demo
+before_script:
+  - cd tests/testapp/
   - python manage.py migrate
-  - python manage.py puput_initial_data
+  - python manage.py loaddata blog/fixtures/test_data.json
   - python manage.py runserver &
+  - cd ../..
 script:
-  - cd ..
   - tox

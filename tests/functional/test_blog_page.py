@@ -1,9 +1,9 @@
 class TestBlogPage(object):
 
-    def test_blog_page(self, browser):
+    def test_blog_page_home(self, browser):
         browser.visit('http://127.0.0.1:8000/blog/')
         assert browser.status_code == 200
-        assert browser.is_text_present('blog')
+        assert browser.is_text_present('Blog')
 
     def test_blog_page_click_search(self, browser):
         browser.visit('http://127.0.0.1:8000/blog/')

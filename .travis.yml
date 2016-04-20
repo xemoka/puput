@@ -1,0 +1,41 @@
+language: python
+python: 2.7
+services:
+  - mysql
+
+matrix:
+  include:
+   - env: TOXENV=py27-dj18
+     python: 2.7
+   - env: TOXENV=py33-dj18
+     python: 3.3
+   - env: TOXENV=py34-dj18
+     python: 3.4
+   - env: TOXENV=py35-dj18
+     python: 3.5
+   - env: TOXENV=py27-dj19
+     python: 2.7
+   - env: TOXENV=py33-dj19
+     python: 3.3
+   - env: TOXENV=py34-dj19
+     python: 3.4
+   - env: TOXENV=py35-dj19
+     python: 3.5
+addons:
+  sauce_connect:
+    username: "puput"
+    access_key:
+      secure: "gYhnLkYfQOv99jZMhBir0hh2LEJ55u9yzwx2IAFIMtW5HGw4ilxKUwWKueI0SdjcEu8gO7CdDbz2pOR+xTtCLvWBHaPdsuelXlVRsiHmFyfgNWHKvqUgKlSWK+0Hr2HBZ/f6Rb3zsrYzzT1+Mb5A8L1pFnJEsvZXQcFMHRVK0BwIPqvk10i2TcptREuzKEllMsfaRuoanTMoRhhDS0TwU6NBK8G5bCmelOUVeL5KEzwzr0F0F4uk/niI3cGH732+GfaeX5AgdtZw+pmowVnrEKZdXMcuSV2nOouCZYkG7EdPPYIkCr5agtrQwjB7QYdyoQFo2A5E2xgYe6ia8iRDgWCPIktHZjVeGnWNC9mDJTxPxjLbZP3RKVMtUgfktjGfuM6v3mkY4VOUWxXRkSo+gxWXD8zrRPh6QBq62kAhSpnse6xF0K8fViHf7fYY3W61go8DJj03Sp3MfVHH7uTlGoeFeH9238K2yrd9i4Uo4zNw465rAHDo/nLUgG2twc82ybBGUbFeW2TTlbm3YfMZpvnJiNKyz3OoKLxXE7i99s2FHOUIYjOI4q4mflpRIQcdcEmR2rtK0Kb3FaIkhcNqgv3/O6vAn9MRwa6TNIDY8dGIh0mhRr7GUW1TeKlsrBWm7q7N2+I93/gnxOfHw2JXZEbaW+0S5iHtVFYB+BCSHJY="
+before_install:
+  - sudo apt-get install xvfb
+install:
+  - mysql -e 'create database puput;'
+  - pip install .
+  - pip install -r requirements-test.txt
+  - cd demo
+  - python manage.py migrate
+  - python manage.py puput_initial_data
+  - python manage.py runserver &
+script:
+  - cd ..
+  - tox

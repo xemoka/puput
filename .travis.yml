@@ -28,7 +28,7 @@ before_install:
   - sudo apt-get install xvfb
 install:
   - mysql -e 'create database puput;'
-#  - pip install .
+  - pip install tox
 #  - pip install -r requirements-test.txt
 #before_script:
 #  - cd tests/testapp/

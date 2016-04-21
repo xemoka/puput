@@ -7,7 +7,7 @@ from subprocess import call
 
 
 def run_django():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blog.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.testapp.settings")
 
     from django.core.management import execute_from_command_line
 

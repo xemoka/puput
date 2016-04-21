@@ -12,7 +12,7 @@ def run_django():
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(['manage.py', 'migrate'])
-    execute_from_command_line(['manage.py', 'loaddata', 'tests/testapp/blog/fixtures/test_data.json'])
+    execute_from_command_line(['manage.py', 'loaddata', 'tests/testapp/fixtures/test_data.json'])
     execute_from_command_line(['manage.py', 'runserver'])
 
 

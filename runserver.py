@@ -3,6 +3,7 @@ import os
 import sys
 
 import pytest
+from subprocess import call
 
 
 def run_django():
@@ -10,16 +11,11 @@ def run_django():
 
     from django.core.management import execute_from_command_line
 
-    execute_from_command_line('migrate')
-    execute_from_command_line('loaddata blog/fixtures/test_data.json')
-    execute_from_command_line('runserver &')
-
-
-def run_tests():
-    pytest.main()
+    execute_from_command_line(['manage.py', 'migrate'])
+    execute_from_command_line(['manage.py', 'loaddata', 'blog/fixtures/test_data.json'])
+    execute_from_command_line(['manage.py', 'runserver'])
 
 
 if __name__ == "__main__":
     run_django()
-    run_tests()
 

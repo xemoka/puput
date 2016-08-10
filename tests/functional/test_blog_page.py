@@ -19,4 +19,5 @@ class TestBlogPage(object):
 
     def test_request(self):
         print(requests.get('http://127.0.0.1:8000/blog/').content)
+        
         assert requests.get('http://127.0.0.1:8000/blog/').status_code == 200

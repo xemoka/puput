@@ -1,3 +1,6 @@
+import requests
+
+
 class TestBlogPage(object):
 
     def test_blog_page_home(self, browser):
@@ -13,3 +16,6 @@ class TestBlogPage(object):
         assert browser.url == 'http://127.0.0.1:8000/blog/search/?q=test'
         assert browser.status_code == 200
         assert browser.is_text_present('Entries for search')
+
+    def test_request(self):
+        assert requests.get('http://127.0.0.1:8000/blog/').status_code == 200

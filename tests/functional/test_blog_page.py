@@ -18,4 +18,5 @@ class TestBlogPage(object):
         assert browser.is_text_present('Entries for search')
 
     def test_request(self):
+        print(requests.get('http://127.0.0.1:8000/blog/').content)
         assert requests.get('http://127.0.0.1:8000/blog/').status_code == 200

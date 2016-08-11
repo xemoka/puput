@@ -8,6 +8,7 @@ def run_django():
 
     execute_from_command_line(['manage.py', 'migrate'])
     execute_from_command_line(['manage.py', 'loaddata', 'tests/testapp/fixtures/test_data.json'])
+    execute_from_command_line(['manage.py', 'collectstatic'])
 
 
 if __name__ == "__main__":

@@ -42,7 +42,7 @@ class TestEntryList(object):
         assert len(entries) > 0
 
     def test_entry_page_archive_year_month(self, browser):
-        browser.visit('http://127.0.0.1:8000/blog/2016/04/')
+        browser.visit('http://127.0.0.1:8000/blog/2016/08/')
         entries = browser.find_by_css('.page-content')
         assert browser.status_code == 200
         assert browser.is_text_present('Entries for date')

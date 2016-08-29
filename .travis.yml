@@ -1,6 +1,6 @@
 language: python
 services:
-  - mysql
+  - sqlite3
 matrix:
   include:
 #   - env: TOXENV=py27-dj18
@@ -27,7 +27,7 @@ addons:
 before_install:
   - sudo apt-get install xvfb
 install:
-  - mysql -e 'create database puput;'
+#  - mysql -e 'create database puput;'
   - pip install tox
 #  - pip install -r requirements-test.txt
 #before_script:
